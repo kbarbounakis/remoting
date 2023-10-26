@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "themost.framework.remoting";
+option java_outer_classname = "RemoteContextProto";
+option objc_class_prefix = "RMO";
+
+package remoting;
+
+message Property {
+  string name = 1;
+  bool isBound = 2;
+}
+
+message GetModelRequest {
+  string name = 1;
+}
+
+message GetModelResponse {
+  repeated Property property = 1;
+}
+
+service RemoteContext {
+  // Sends a greeting
+  rpc GetModel (GetModelRequest) returns (GetModelResponse) {}
+
+}
