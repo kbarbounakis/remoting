@@ -9,7 +9,14 @@ package remoting;
 
 message Property {
   string name = 1;
-  bool isBound = 2;
+  string type = 2;
+  bool nullable = 3;
+}
+
+message NavigationProperty {
+  string name = 1;
+  string type = 2;
+  bool nullable = 3;
 }
 
 message GetModelRequest {
@@ -17,11 +24,11 @@ message GetModelRequest {
 }
 
 message GetModelResponse {
-  repeated Property property = 1;
+  string name = 1;
+  repeated Property property = 2;
+  repeated NavigationProperty navigationProperty = 3;
 }
 
 service RemoteContext {
-  // Sends a greeting
   rpc GetModel (GetModelRequest) returns (GetModelResponse) {}
-
 }

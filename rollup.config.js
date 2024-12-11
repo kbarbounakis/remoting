@@ -1,5 +1,5 @@
 import { babel } from '@rollup/plugin-babel';
-import dts from 'rollup-plugin-dts';
+import { dts } from 'rollup-plugin-dts';
 const pkg = require('./package.json');
 const config = [
   {

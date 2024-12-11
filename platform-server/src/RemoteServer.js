@@ -32,13 +32,11 @@ class RemoteServer extends ApplicationService {
             getModel: (call, callback) => {
                 const name = call.request.name;
                 const service = this.application.getService(ODataModelBuilder);
-                const items = service.getEntity(name).property;
-                const property = items.map(({name, isBound}) => {
-                     name,
-                     isBound
-                });
-                return callback({
-                    property
+                const { property, navigationProperty } = service.getEntity(name);
+                return callback(null, {
+                    name,
+                    property,
+                    navigationProperty
                 });
             },
         });
